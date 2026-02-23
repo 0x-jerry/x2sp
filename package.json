@@ -29,7 +29,6 @@
     "@0x-jerry/x-release": "^2.4.1",
     "@biomejs/biome": "^2.4.4",
     "@types/node": "^25.3.0",
-    "@types/whatwg-url": "^13.0.0",
     "@vitest/coverage-v8": "^4.0.18",
     "tsup": "^8.5.1",
     "tsx": "^4.21.0",
@@ -37,7 +36,6 @@
     "vitest": "^4.0.18"
   },
   "dependencies": {
-    "@0x-jerry/utils": "^6.1.1",
-    "whatwg-url": "^16.0.1"
+    "@0x-jerry/utils": "^6.1.1"
   }
 }
