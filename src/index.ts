@@ -50,6 +50,10 @@ export function encode(opt: X2SPOption): string {
   url.hash = name
 
   Object.entries({ ...other, ...transport }).forEach(([key, value]) => {
+    if (value == null) {
+      return
+    }
+
     const v = isString(value) ? value : JSON.stringify(value)
     url.searchParams.set(key, v)
   })

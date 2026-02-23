@@ -51,6 +51,24 @@ describe('x2sp', () => {
       sharedStr:
         'vless://44efe52b-e143-46b5-a9e7-aadbfd77eb9c@qv2ray.net:6939?flow=xtls-rprx-vision&encryption=xxx.encryption&type=ws&host=qv2ray.net&path=%2Fsomewhere#test',
     },
+    {
+      config: {
+        protocol: 'vless',
+        uuid: '44efe52b-e143-46b5-a9e7-aadbfd77eb9c',
+        host: 'qv2ray.net',
+        port: 6939,
+        name: 'test',
+        flow: undefined,
+        encryption: undefined,
+        transport: {
+          type: 'ws',
+          host: 'qv2ray.net',
+          path: '/somewhere',
+        },
+      },
+      sharedStr:
+        'vless://44efe52b-e143-46b5-a9e7-aadbfd77eb9c@qv2ray.net:6939?type=ws&host=qv2ray.net&path=%2Fsomewhere#test',
+    },
   ]
 
   it('#encode', () => {
