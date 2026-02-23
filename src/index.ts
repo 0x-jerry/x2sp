@@ -8,6 +8,9 @@ export interface X2SPOption {
   port: number
   name: string
 
+  encryption?: string
+  flow?: '' | 'xtls-rprx-vision'
+
   transport?: {
     type?: 'raw' | 'xhttp' | 'ws'
 
@@ -39,14 +42,14 @@ export interface X2SPOption {
  * @returns
  */
 export function encode(opt: X2SPOption): string {
-  const { protocol, host, port, name, uuid, transport = {} } = opt
+  const { protocol, host, port, name, uuid, transport = {}, ...other } = opt
 
   const url = new URL(`${protocol}://${host}:${port}`)
 
   url.username = uuid
   url.hash = name
 
-  Object.entries(transport).forEach(([key, value]) => {
+  Object.entries({ ...other, ...transport }).forEach(([key, value]) => {
     const v = isString(value) ? value : JSON.stringify(value)
     url.searchParams.set(key, v)
   })
@@ -72,6 +75,8 @@ export function decode(sharedString: string): X2SPOption {
     host: url.hostname,
     port: Number.parseInt(url.port),
     uuid: url.username,
+    encryption: $('encryption'),
+    flow: $('flow') as '',
   }
 
   const keys: Array<keyof NonNullable<X2SPOption['transport']>> = [
